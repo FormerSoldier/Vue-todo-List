@@ -1,31 +1,25 @@
 <template>
-    <ul id="filters">
-      <li v-for="item in btnGroup" :key = "item.id">
-        <a href="#" class="selected">{{item.filter}}</a>
-      </li>
-    </ul>
+    <li>
+        <a href="#" class="selected" @click="clickBtn">{{item.filter}}</a>
+    </li>
 </template>
 
+
 <script>
-let id = 0;
-const getId = ()=>{
-  return id++;
-}
-export default {
-  name: 'Footer',
-  data:function(){
-    return {
-      btnGroup: [{filter:'ALL',isSelected:false,id:getId()},
-      {filter:'Active',isSelected:false,id:getId()},
-      {filter:'Complete',isSelected:false,id:getId()}]
+    export default{
+        props:['item'],
+        data:function(){
+            
+        },
+        methods:{
+            clickBtn: function(){
+                    
+            }
+        }
     }
-  }
-}
 </script>
 
 <style>
-
-
 #filters li a {
     color: #fc999b;
     margin: 3px;

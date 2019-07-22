@@ -2,17 +2,14 @@
   <div id="container" class="container">
     <Header></Header>
     <Body></Body>
-    <ul id="filters">
-      <footer-list-item></footer-list-item>
-    </ul>
-    
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Body from './components/Body.vue'
 import Header from './components/Header.vue'
-import FooterListItem from './components/FooterListItem.vue'
+import Footer from './components/Footer.vue'
 
 let id = 0;
 const getId = ()=> {
@@ -25,7 +22,7 @@ export default {
   components: {
     Header,
     Body,
-    FooterListItem
+    Footer
   }
 
 }
@@ -44,10 +41,4 @@ body {
     background: white;
     border-radius: 5px;
 }
- #filters{
-     text-align: center;
-     margin-bottom: -10px;
-     margin-top: 40px;
- 
- }
 </style>
