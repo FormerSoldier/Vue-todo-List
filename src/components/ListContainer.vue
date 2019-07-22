@@ -1,7 +1,10 @@
 <template>
   <div> 
     <li :class="[checked]">
-      <input type="checkbox" v-model="check_status"  @click="clickCheckBox" />{{item.value}}
+      <input type="checkbox" v-model="check_status"  @click="clickCheckBox" />
+      <span @dblclick="doubleClick" 
+            :contenteditable="isEdit"
+            @keydown.enter="saveVlue">{{item.value}}</span>
     </li>
   </div>
 </template>
@@ -14,7 +17,9 @@ export default {
   data:function(){
     return {
       checked: this.item.finished === true? 'checked' :'',
-      check_status: this.item.finished
+      check_status: this.item.finished,
+      isEdit: false,
+      //val: this.item.value
     }
   },
   methods:{
@@ -22,8 +27,19 @@ export default {
        this.checked = this.checked === 'checked' ? '' : 'checked';
        this.item.finished = !this.item.finished;
        this.$emit('itemClickCheckBox',this.item,this.idx);
+    },
+    doubleClick:function(){
+      console.log('yes');
+      this.isEdit = true;
+    },
+    saveVlue:function(){
+        this.isEdit = false;
+        // 改变item.value
+
+        this.$emit('itemClickCheckBox',this.item, this.idx);
     }
-  }
+  },
+  
 
 }
 </script>
@@ -58,5 +74,10 @@ li:hover{
 input[type=checkbox].done-todo { 
 	
     margin: 5px 5px 2px 0; 
+}
+
+#ipt{
+  background:#fff;
+  border:none;
 }
 </style>

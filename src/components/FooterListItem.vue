@@ -15,8 +15,6 @@
         },
         methods:{
             clickBtn: function(){
-                console.log('点击');
-                console.log(this.bus == null);
                 this.bus.$emit('change',this.item.filter);
             }
         }

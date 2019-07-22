@@ -21,7 +21,6 @@ export default {
   },
   methods: {
       addItem: function(){
-        //this.list.push(this.inputValue);
         this.list.push({
           value: this.inputValue,
           finished: false,

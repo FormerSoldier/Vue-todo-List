@@ -33,7 +33,6 @@ export default {
   },
   methods:{
     filterListMethod: function(){
-      console.log(this.list);
       if(this.filterType === 'Active'){
         this.filterList =  this.list.filter((item) => !item.finished);
       }else if(this.filterType === 'Complete'){
@@ -51,17 +50,9 @@ export default {
       this.filterListMethod();
     }
   },
-  
-  /*computed:{
-    filterList: function(){
-      console.log('chan222g');
-      
-    }
-  },*/
   mounted: function(){
     let this_ = this;
     this.bus.$on('change',function(filter){
-      console.log('进入');
       this_.filterType = filter;
       this_.filterListMethod();
     });
