@@ -1,19 +1,23 @@
 <template>
     <li>
-        <a href="#" class="selected" @click="clickBtn">{{item.filter}}</a>
+        <a href="#" :class="{selected:isSelected}" @click="clickBtn">{{item.filter}}</a>
     </li>
 </template>
 
 
 <script>
+    import Vue from 'vue'
+
     export default{
-        props:['item'],
+        props:['item','idx','isSelected'],
         data:function(){
-            
+            return{}
         },
         methods:{
             clickBtn: function(){
-                    
+                console.log('点击');
+                console.log(this.bus == null);
+                this.bus.$emit('change',this.item.filter);
             }
         }
     }

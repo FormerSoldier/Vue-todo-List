@@ -1,7 +1,7 @@
 <template>
   <div> 
     <li :class="[checked]">
-      <input type="checkbox" @click="clickCheckBox" />{{item.value}}
+      <input type="checkbox" v-model="check_status"  @click="clickCheckBox" />{{item.value}}
     </li>
   </div>
 </template>
@@ -10,16 +10,18 @@
 
 export default {
   name: 'ListContainer',
-  props:['item'],
+  props:['item','idx'],
   data:function(){
     return {
-      checked: ''
+      checked: this.item.finished === true? 'checked' :'',
+      check_status: this.item.finished
     }
   },
   methods:{
     clickCheckBox: function(){
        this.checked = this.checked === 'checked' ? '' : 'checked';
        this.item.finished = !this.item.finished;
+       this.$emit('itemClickCheckBox',this.item,this.idx);
     }
   }
 

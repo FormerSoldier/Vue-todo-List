@@ -10,7 +10,9 @@
 import Body from './components/Body.vue'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
+import Vue from 'vue'
 
+Vue.prototype.bus = new Vue();
 let id = 0;
 const getId = ()=> {
   return id++;

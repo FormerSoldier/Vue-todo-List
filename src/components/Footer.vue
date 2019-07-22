@@ -1,7 +1,11 @@
 <template>
   <div>
     <ul id="filters">
-      <footer-list-item v-for="item in btnGroup" :key="item.id" :item ="item"></footer-list-item>
+      <footer-list-item v-for="(item,index) in btnGroup" 
+                        :key="item.id" 
+                        :item ="item"
+                        :idx ="index"
+                        @click="clickBtn"></footer-list-item>
     </ul>
   </div>
 </template>
@@ -21,6 +25,19 @@ export default {
       btnGroup: [{filter:'ALL',isSelected:false,id:getId()},
       {filter:'Active',isSelected:false,id:getId()},
       {filter:'Complete',isSelected:false,id:getId()}]
+    }
+  },
+  methods:{
+    clickBtn:function(index){
+        alert('进入');
+        this.btnGroup.forEach((item,idx)=>{
+          if(idx != index){
+            item.isSelected = false;
+          }
+          else{
+            item.isSelected = true;
+          }
+        });
     }
   },
   components:{

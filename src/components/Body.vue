@@ -2,7 +2,11 @@
   <div>
     <InputBar @push="pushList"></InputBar>
     <ol>
-      <ListContainer v-for="item in list" :key="item.id" :item = "item"></ListContainer>
+      <ListContainer v-for="(item,index) in filterList"
+                     :key="item.id" 
+                     :item = "item"
+                     :idx ="index"
+                     @itemClickCheckBox="listItemChange"></ListContainer>
     </ol>
   </div>
 </template>
@@ -12,13 +16,15 @@
 <script>
 import InputBar from "./InputBar.vue"
 import ListContainer from "./ListContainer.vue"
-
+import Vue from 'vue'
 
 export default {
   name: 'Body',
   data: function(){
     return {
-       list:[]
+       list:[],
+       filterType: 'ALL',
+       filterList:[]
     }
   },
   components:{
@@ -26,9 +32,39 @@ export default {
     ListContainer
   },
   methods:{
+    filterListMethod: function(){
+      console.log(this.list);
+      if(this.filterType === 'Active'){
+        this.filterList =  this.list.filter((item) => !item.finished);
+      }else if(this.filterType === 'Complete'){
+        this.filterList = this.list.filter((item) => item.finished);
+      }else{
+        this.filterList = this.list;
+      }
+    },
     pushList:function(list){
       this.list = list;
+      this.filterListMethod();
+    },
+    listItemChange: function(item,index){
+      Vue.set(this.list,index,item);
+      this.filterListMethod();
     }
+  },
+  
+  /*computed:{
+    filterList: function(){
+      console.log('chan222g');
+      
+    }
+  },*/
+  mounted: function(){
+    let this_ = this;
+    this.bus.$on('change',function(filter){
+      console.log('进入');
+      this_.filterType = filter;
+      this_.filterListMethod();
+    });
   }
 }
 </script>
