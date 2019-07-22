@@ -2,7 +2,8 @@
   <div> 
     <li :class="[checked]">
       <input type="checkbox" v-model="check_status"  @click="clickCheckBox" />
-      <span @dblclick="doubleClick" 
+      <span ref="span"
+            @dblclick="doubleClick" 
             :contenteditable="isEdit"
             @keydown.enter="saveVlue">{{item.value}}</span>
     </li>
@@ -19,7 +20,7 @@ export default {
       checked: this.item.finished === true? 'checked' :'',
       check_status: this.item.finished,
       isEdit: false,
-      //val: this.item.value
+      val: this.item.value
     }
   },
   methods:{
@@ -29,12 +30,12 @@ export default {
        this.$emit('itemClickCheckBox',this.item,this.idx);
     },
     doubleClick:function(){
-      console.log('yes');
       this.isEdit = true;
     },
     saveVlue:function(){
         this.isEdit = false;
         // 改变item.value
+        this.item.value = this.$refs.span.innerHTML;
 
         this.$emit('itemClickCheckBox',this.item, this.idx);
     }
