@@ -1,33 +1,53 @@
 <template>
-  <div id="app">
+  <div id="container" class="container">
     <Header></Header>
     <Body></Body>
-    <Footer></Footer>
+    <ul id="filters">
+      <footer-list-item></footer-list-item>
+    </ul>
+    
   </div>
 </template>
 
 <script>
 import Body from './components/Body.vue'
 import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
+import FooterListItem from './components/FooterListItem.vue'
+
+let id = 0;
+const getId = ()=> {
+  return id++;
+}
+
 
 export default {
-  name: 'app',
+  name: 'container',
   components: {
     Header,
     Body,
-    Footer
+    FooterListItem
   }
+
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body {
+    font: normal normal 13px/16px "Open Sans", sans-serif;
+    background: #ccc;
 }
+.container {
+    padding: 20px;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 40px;
+    background: white;
+    border-radius: 5px;
+}
+ #filters{
+     text-align: center;
+     margin-bottom: -10px;
+     margin-top: 40px;
+ 
+ }
 </style>
