@@ -29,7 +29,6 @@ export default {
   },
   methods:{
     clickBtn:function(index){
-        alert('进入');
         this.btnGroup.forEach((item,idx)=>{
           if(idx != index){
             item.isSelected = false;

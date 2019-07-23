@@ -15,7 +15,8 @@
         },
         methods:{
             clickBtn: function(){
-                this.bus.$emit('change',this.item.filter);
+                //this.bus.$emit('change',this.item.filter);
+                this.$store.commit('setFilter',this.item.filter);
             }
         }
     }

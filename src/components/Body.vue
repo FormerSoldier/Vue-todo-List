@@ -11,21 +11,24 @@
   </div>
 </template>
 
-
-
 <script>
 import InputBar from "./InputBar.vue"
 import ListContainer from "./ListContainer.vue"
-import Vue from 'vue'
 
 export default {
   name: 'Body',
   data: function(){
     return {
        list:[],
-       filterType: 'ALL',
+       filterType: this.$store.getters.getFilter,
        filterList:[]
     }
+  },
+  watch:{
+      "$store.state.filter": function(){
+        this.filterType = this.$store.getters.getFilter;
+        this.filterListMethod();
+      }
   },
   components:{
     InputBar,
@@ -46,16 +49,9 @@ export default {
       this.filterListMethod();
     },
     listItemChange: function(item,index){
-      Vue.set(this.list,index,item);
+      this.$set(this.list,index,item);
       this.filterListMethod();
     }
-  },
-  mounted: function(){
-    let this_ = this;
-    this.bus.$on('change',function(filter){
-      this_.filterType = filter;
-      this_.filterListMethod();
-    });
   }
 }
 </script>
