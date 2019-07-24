@@ -36,7 +36,7 @@ export default {
         this.isEdit = false;
         // 改变item.value
         this.item.value = this.$refs.span.innerHTML;
-        this.$emit('itemClickCheckBox',this.item, this.idx);
+        this.$emit('itemClickCheckBox',this.item, this.item.id);
     }
   },
   

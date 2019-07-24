@@ -48,8 +48,12 @@ export default {
       this.list = list;
       this.filterListMethod();
     },
-    listItemChange: function(item,index){
-      this.$set(this.list,index,item);
+    listItemChange: function(item,id){
+      let index = 0;
+      for(let i = 0; i < this.list.length; i++)
+        if(this.list[i].id == id)
+          index = i;
+      this.$set(this.list,i,item);
       this.filterListMethod();
     }
   }
