@@ -5,7 +5,9 @@
       <span ref="span"
             @dblclick="doubleClick" 
             :contenteditable="isEdit"
-            @keydown.enter="saveVlue">{{item.value}}</span>
+            @keydown.enter="saveVlue"
+            v-html="item.value"></span>
+        <p class="time">{{item.time}}</p>      
     </li>
   </div>
 </template>
@@ -79,5 +81,9 @@ input[type=checkbox].done-todo {
 #ipt{
   background:#fff;
   border:none;
+}
+.time{
+  float:right;
+  color:#cc8;
 }
 </style>
