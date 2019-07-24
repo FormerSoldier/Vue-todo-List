@@ -15,8 +15,7 @@ import FooterListItem from './FooterListItem.vue';
 let id = 0;
 const getId = ()=>{
   return id++;
-};
-
+}
 
 export default {
   name: 'Footer',
@@ -24,7 +23,7 @@ export default {
     return {
       btnGroup: [{filter:'ALL',isSelected:false,id:getId()},
       {filter:'Active',isSelected:false,id:getId()},
-      {filter:'Complete',isSelected:false,id:getId()}]
+      {filter:'Complete',isSelected:false,id: getId()}]
     }
   },
   methods:{
@@ -37,6 +36,9 @@ export default {
             item.isSelected = true;
           }
         });
+    },
+    getId(){
+      return this.$store.getters.getId;
     }
   },
   components:{

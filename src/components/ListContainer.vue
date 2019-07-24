@@ -27,7 +27,7 @@ export default {
     clickCheckBox: function(){
        this.checked = this.checked === 'checked' ? '' : 'checked';
        this.item.finished = !this.item.finished;
-       this.$emit('itemClickCheckBox',this.item,this.idx);
+       this.$emit('itemClickCheckBox',this.item,this.item.id);
     },
     doubleClick:function(){
       this.isEdit = true;

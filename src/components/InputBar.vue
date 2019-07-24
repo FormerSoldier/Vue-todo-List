@@ -7,7 +7,7 @@
 
 <script>
 let id = 0;
-const getId = ()=> {
+const getId = ()=>{
   return id++;
 }
 
@@ -24,8 +24,9 @@ export default {
         this.list.push({
           value: this.inputValue,
           finished: false,
-          id: getId()
+          id:getId()
         });
+
         this.inputValue = '';
         this.$emit('push',this.list);
       }

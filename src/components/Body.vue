@@ -53,7 +53,7 @@ export default {
       for(let i = 0; i < this.list.length; i++)
         if(this.list[i].id == id)
           index = i;
-      this.$set(this.list,i,item);
+      this.$set(this.list,id,item);
       this.filterListMethod();
     }
   }
