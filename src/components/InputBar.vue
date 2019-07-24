@@ -6,7 +6,7 @@
 </template>
 
 <script>
-
+import getFormatTime from '../util/timeUtil'
 
 let id = 0;
 const getId = ()=>{
@@ -26,7 +26,8 @@ export default {
         this.list.push({
           value: this.inputValue,
           finished: false,
-          id:getId()
+          id:getId(),
+          time:getFormatTime()
         });
 
         this.inputValue = '';

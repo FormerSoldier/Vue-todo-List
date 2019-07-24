@@ -83,7 +83,7 @@ input[type=checkbox].done-todo {
   border:none;
 }
 .time{
-  float:right;
   color:#cc8;
+  margin-left:58%;
 }
 </style>
